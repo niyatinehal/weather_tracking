@@ -24,7 +24,7 @@ export const DetailedWeatherView = () => {
     const forecast=useSelector((state)=>state?.weather?.forecast)
     const weatherData = weather?.weather;
     const forecastData = forecast?.forecast?.forecastday;
-    console.log(weatherData)
+    console.log(forecastData)
   return (
     <div className="min-h-screen p-4 md:p-8">
         <div className="max-w-6xl mx-auto">
@@ -32,7 +32,7 @@ export const DetailedWeatherView = () => {
           <button 
             variant="ghost" 
             onClick={handleBack}
-            className="mr-4 glass-panel border-0 text-black"
+            className="mr-4 glass-panel border-0 text-black flex items-center px-4"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Dashboard
@@ -49,9 +49,10 @@ export const DetailedWeatherView = () => {
               <div className="text-6xl font-bold text-gray-800 mb-2">
                 {weatherData?.temp}°C
               </div>
-              <Badge variant="secondary" className="mb-4">
+              <div variant="secondary" className="mb-4 flex justify-center gap-4">
+              <Badge variant="secondary" className="mb-4 font-bold text-gray-800"></Badge>
                 {weatherData?.desc}
-              </Badge>
+              </div>
               
               <div className="grid grid-cols-2 gap-4 mt-6">
                 <div className="text-center">

@@ -76,11 +76,11 @@ function App() {
           </div>
 
           <div className="flex gap-3">
-            <button variant="outline" size="sm" onClick={handleRefresh} className="glass-panel border-0">
-              <RefreshCw className="w-4 h-4 mr-2" />
-              Refresh
+            <button variant="outline" size="sm" onClick={handleRefresh} className="glass-panel border-0 flex items-center px-4 ">
+              <RefreshCw className="w-4 h-4 mr-2 " />
+              <p>Refresh</p>
             </button>
-            <button variant="outline" size="sm" onClick={toggleTempUnit} className="glass-panel border-0">
+            <button variant="outline" size="sm" onClick={toggleTempUnit} className="glass-panel border-0 flex items-center px-1 ">
               <Thermometer className="w-4 h-4 mr-2" />
               {temperatureUnit === 'celsius' ? '°F' : '°C'}
             </button>
@@ -88,7 +88,7 @@ function App() {
         </div>
 
         {/* Search */}
-        <div className="mb-8">
+        <div className="mb-8 w-10">
           <SearchBar onSearch={handleSearch} />
         </div>
 
