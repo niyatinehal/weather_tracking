@@ -50,7 +50,7 @@ const SearchBar = ({ onSearch }) => {
       <div className="relative">
         <input
           type="text"
-          placeholder="Add city..."
+          placeholder="Add  city..."
           value={query}
           onChange={(e) => handleInputChange(e.target.value)}
           onKeyPress={handleKeyPress}

@@ -20,8 +20,10 @@ function App() {
   const [favorites, setFavorites] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [temperatureUnit, setTemperatureUnit] = useState('celsius');
+  const [loading, setLoading] = useState(false); // 👈 Loader state
 
   const fetchAllCitiesWeather = async () => {
+    setLoading(true); // 👈 Start loading
     const allData = {};
     for (const city of cities) {
       try {
@@ -32,6 +34,7 @@ function App() {
       }
     }
     dispatch(setWeatherData(allData));
+    setLoading(false); // 👈 Stop loading
   };
 
   const handleSearch = (query) => {
@@ -51,6 +54,7 @@ function App() {
     setFavorites(updatedFavorites);
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   };
+
   const handleRefresh = () => {
     fetchAllCitiesWeather();
   };
@@ -64,14 +68,22 @@ function App() {
     const interval = setInterval(fetchAllCitiesWeather, 60000);
     return () => clearInterval(interval);
   }, [cities]);
-  
+
   useEffect(() => {
     const storedFavorites = localStorage.getItem('favorites');
     if (storedFavorites) {
       setFavorites(JSON.parse(storedFavorites));
     }
   }, []);
-  
+
+  // 👇 Loader Component
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="w-16 h-16 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen p-4 md:p-8">

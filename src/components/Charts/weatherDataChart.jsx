@@ -1,27 +1,29 @@
 import React from 'react';
 import {
-    LineChart,
-    Line,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    Legend,
-    ResponsiveContainer,
-  } from 'recharts';
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from 'recharts';
 
 const WeatherChart = ({ cities }) => {
-  // Prepare the data for the chart
   const chartData = cities.map((city) => ({
-    name: city.city ,
-    Temperature: city.temp_c ? city.temp_c : 0,
+    name: city.city,
+    Temperature: city.temp_c || 0,
     Humidity: city.humidity || 0,
   }));
 
   return (
-    <div className="w-full h-96 text-black">
+    <div className="w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[600px] p-4 sm:p-6 md:p-8 bg-white rounded-xl shadow-md">
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+        <LineChart
+          data={chartData}
+          margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+        >
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
           <XAxis dataKey="name" stroke="#6b7280" fontSize={12} />
           <YAxis stroke="#6b7280" fontSize={12} />
@@ -32,9 +34,10 @@ const WeatherChart = ({ cities }) => {
               border: 'none',
               borderRadius: '8px',
               boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
+              fontSize: '0.875rem',
             }}
           />
-          <Legend />
+          <Legend wrapperStyle={{ fontSize: '0.875rem' }} />
           <Line
             type="monotone"
             dataKey="Temperature"
