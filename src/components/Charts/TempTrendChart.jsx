@@ -54,3 +54,4 @@ const ForecastChart = ({ data, temperatureUnit = '°C' }) => {
 };
 
 export default ForecastChart;
+  

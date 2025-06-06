@@ -14,12 +14,12 @@ const WeatherChart = ({ cities }) => {
   // Prepare the data for the chart
   const chartData = cities.map((city) => ({
     name: city.city ,
-    Temperature: city.temp ? city.temp : 0,
+    Temperature: city.temp_c ? city.temp_c : 0,
     Humidity: city.humidity || 0,
   }));
 
   return (
-    <div className="w-full h-96">
+    <div className="w-full h-96 text-black">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />

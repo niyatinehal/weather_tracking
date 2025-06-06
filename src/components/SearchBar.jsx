@@ -45,12 +45,12 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <div className="relative w-[100vw] max-w-2xl mx-auto">
+    <div className="relative w-full max-w-2xl mx-auto text-black">
 
       <div className="relative">
         <input
           type="text"
-          placeholder="Search for a city..."
+          placeholder="Add city..."
           value={query}
           onChange={(e) => handleInputChange(e.target.value)}
           onKeyPress={handleKeyPress}
@@ -61,12 +61,12 @@ const SearchBar = ({ onSearch }) => {
 
       {/* Suggestions Dropdown */}
       {suggestions.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-2 glass-panel border-0 shadow-lg rounded-lg z-50">
+        <div className="absolute w-40 top-full left-0 right-0 mt-2 glass-panel border-0 shadow-lg rounded-lg z-50">
           {suggestions.map((city) => (
             <button
               key={city}
               onClick={() => handleSuggestionClick(city)}
-              className="w-full text-left px-4 py-3 hover:bg-white/50 flex items-center transition-colors first:rounded-t-lg last:rounded-b-lg"
+              className="text-left px-4 py-3 hover:bg-white/50 flex items-center transition-colors first:rounded-t-lg last:rounded-b-lg"
             >
               <MapPin className="w-4 h-4 mr-3 text-gray-500" />
               <span>{city}</span>

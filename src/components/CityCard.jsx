@@ -1,7 +1,7 @@
 import React from 'react';
 import { RefreshCw, Thermometer, Heart, MapPin } from 'lucide-react';
 
-const CityCard = ({ weather, onClick,isFavorite,onToggleFavorite }) => {
+const CityCard = ({ weather, onClick,isFavorite,onToggleFavorite,temperatureUnit }) => {
 
   const getWeatherGradient = (condition) => {
     const lowerCondition = condition?.toLowerCase();
@@ -15,7 +15,9 @@ const CityCard = ({ weather, onClick,isFavorite,onToggleFavorite }) => {
     return 'weather-gradient';
   };
 
-  const temp = weather?.weather?.temp;
+
+  console.log("weather", temperatureUnit)
+
 
   // return (
   //   <div onClick={onClick} className="cursor-pointer rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 text-white p-6 shadow-lg transition hover:scale-105">
@@ -72,7 +74,7 @@ const CityCard = ({ weather, onClick,isFavorite,onToggleFavorite }) => {
             {/* {getWeatherIcon(weather.condition)} */}
             <div className="ml-3">
               <div className="text-3xl font-bold text-gray-800">
-                {weather?.temp}°C
+                {temperatureUnit==="celsius"? weather?.temp_c: weather?.temp_f}{temperatureUnit==="celsius"?"°C":"F"}
               </div>
               <div className="text-sm text-gray-600">{weather?.condition}</div>
             </div>

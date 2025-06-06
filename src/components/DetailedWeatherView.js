@@ -43,11 +43,11 @@ export const DetailedWeatherView = () => {
           </div>
           </div>
           {/**Main body */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8 text-black">
           <Card className="glass-panel p-6 lg:col-span-1">
             <div className="text-center">
               <div className="text-6xl font-bold text-gray-800 mb-2">
-                {weatherData?.temp}°C
+                {weatherData?.temp_c}°C
               </div>
               <div variant="secondary" className="mb-4 flex justify-center gap-4">
               <Badge variant="secondary" className="mb-4 font-bold text-gray-800"></Badge>
@@ -73,7 +73,7 @@ export const DetailedWeatherView = () => {
                 <div className="text-center">
                   <Droplets className="w-6 h-6 mx-auto mb-2 text-cyan-500" />
                   <div className="text-sm text-gray-600">Feels Like</div>
-                  <div className="font-semibold">{weatherData?.temp + 2}°C</div>
+                  <div className="font-semibold">{weatherData?.temp_c + 2}°C</div>
                 </div>
               </div>
             </div>

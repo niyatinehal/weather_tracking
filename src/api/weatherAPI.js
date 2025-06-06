@@ -7,7 +7,8 @@ export const getWeatherByCity = async (city) => {
   const res = await axios.get(`${BASE_URL}/current.json?key=${API_KEY}&q=${city}&units=metric`);
   return {
     city,
-    temp: res.data.current.temp_c,
+    temp_c: res.data.current.temp_c,
+    temp_f:res.data.current.temp_f,
     icon: res.data.current.condition.icon,
     desc: res.data.current.condition.text,
     wind: res.data.current.wind_kph,

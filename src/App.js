@@ -42,13 +42,15 @@ function App() {
   };
 
   const handleToggleFavorite = (cityName) => {
+    let updatedFavorites;
     if (favorites.includes(cityName)) {
-      setFavorites((prev) => prev.filter((c) => c !== cityName));
+      updatedFavorites = favorites.filter((c) => c !== cityName);
     } else {
-      setFavorites((prev) => [...prev, cityName]);
+      updatedFavorites = [...favorites, cityName];
     }
+    setFavorites(updatedFavorites);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   };
-
   const handleRefresh = () => {
     fetchAllCitiesWeather();
   };
@@ -62,6 +64,14 @@ function App() {
     const interval = setInterval(fetchAllCitiesWeather, 60000);
     return () => clearInterval(interval);
   }, [cities]);
+  
+  useEffect(() => {
+    const storedFavorites = localStorage.getItem('favorites');
+    if (storedFavorites) {
+      setFavorites(JSON.parse(storedFavorites));
+    }
+  }, []);
+  
 
   return (
     <div className="min-h-screen p-4 md:p-8">
@@ -75,7 +85,7 @@ function App() {
             <p className="text-gray-600 mt-2">Real-time weather insights and forecasts</p>
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex gap-3 text-black">
             <button variant="outline" size="sm" onClick={handleRefresh} className="glass-panel border-0 flex items-center px-4 ">
               <RefreshCw className="w-4 h-4 mr-2 " />
               <p>Refresh</p>
