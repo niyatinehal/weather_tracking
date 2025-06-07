@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getWeatherforecast } from '../api/forecastAPI';
-import {fetchWeather} from "../utils/weatherUtil"
+import { getWeatherforecast } from '../../api/forecastAPI';
+import {fetchWeather} from "../../utils/weatherUtil"
 import { Sun, Cloud, CloudRain } from 'lucide-react';
 
 export const HourlyForecast = ({city}) => {
