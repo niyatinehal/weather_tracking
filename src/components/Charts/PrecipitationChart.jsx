@@ -23,7 +23,7 @@ export const PrecipitationChart  = ({ city }) => {
   }));
 
   return (
-    <div className="w-full h-60 md:h-80 p-4 text-black">
+    <div className="w-full h-52 md:h-80 p-4 text-black">
       <h3 className="text-xl font-semibold text-gray-900 mb-4">24-Hour Precipitation Forecast</h3>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={formattedData}>
